@@ -29,7 +29,7 @@ include 'cnx.php';
 <?php include '../component/slidbar.php'?>
 
 <section class ="form" >
-        <div id="content" style ="background: blanchedalmond;">
+        <div id="content" style ="background: #e5a950;">
         <form action="./insertusers.php" method="POST" >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >name</label>

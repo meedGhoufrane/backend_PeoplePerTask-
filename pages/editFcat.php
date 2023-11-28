@@ -1,7 +1,4 @@
-<?php 
-include 'cnx.php';
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,19 +25,38 @@ include 'cnx.php';
 <body>
 <?php include '../component/slidbar.php'?>
 
-<section class ="form">
+    <section class ="form">
+        <?php
+        include 'cnx.php';
+
+        $id = $_GET['id'];
+
+        $stmt = $cnx->prepare('SELECT * FROM categories WHERE id = ?');
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($value = $result->fetch_assoc()){
+            $old_name = $value['nomcat'];
+        }
+
+        ?>
+
         <div id="content" style ="background: #e5a950;">
-        <form action="./insertcat.php" method="POST" >
+        <form action="./editcategories.php?id=<?=$id?>" method="POST" >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >name categories</label>
-            <input type="text" class="form-control" name="nomcat" id="nomcat">
+            <input type="text" class="form-control" name="nomcat" id="nomcat" value="<?= $old_name?>">
         </div>
-      
+     
         
        
-        <button id="button" type="submit" class="btn btn-primary ">Submit</button>
+        <button id="button" type="submit" class="btn btn-warning ">edit</button>
         </form>
         </div> 
+         <?php
+         $stmt->close();
+         $cnx->close(); 
+         ?>
 </section>
 
     <script src="../js/bootstrap.min.js"></script>

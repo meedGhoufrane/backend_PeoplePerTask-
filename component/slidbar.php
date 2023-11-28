@@ -34,7 +34,7 @@
         </div>
         </div>
         </div>
-<div class="col-11" id="column2" style ="background: blanchedalmond;">
+<div class="col-11" id="column2" style ="background: #e5a950;">
     <div id="nav-bar">
         <img id="menu-logo" style="height: 40px;" src="../images/more.png" alt="menu">
         <div id="nav-bar-section2">

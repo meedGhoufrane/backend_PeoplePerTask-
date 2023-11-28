@@ -60,8 +60,29 @@ Create new categorie
             <tr>
                 <td><?=$value['id'] ?></td>
                 <td><?=$value['nomcat'] ?></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <div>
+                        <form class="pr-3" method='GET'>
+                            <button type="button" class="btn btn-danger " name = "delete">
+                                    <a  class="hover:bg-red-500 hover:text-white text-red-500 rounded-md p-2" 
+                                    href="deletecategories.php?id=<?=$value['id']?>" onclick="confirmDelete(event)">Delete
+                                </a>
+                            </button>
+                         </form>
+                    </div>
+                    <form class="pr-3" method='GET'>
+                            <button type="button" class="btn btn-warning " name = "edit">
+                                    <a  class="hover:bg-red-500 hover:text-white text-red-500 rounded-md p-2" 
+                                    href="editFcat.php?id=<?=$value['id']?>" >update
+                                </a>
+                            </button>
+                         </form>
+                    </div>      
+                </td>
             </tr>
             <?php endforeach;?>
+            
         </tbody>
     </table>
     

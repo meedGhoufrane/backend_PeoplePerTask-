@@ -46,7 +46,7 @@ include 'cnx.php';
         }
 
         ?>
-    <div id="content" style ="background: blanchedalmond;">
+    <div id="content" style ="background: #e5a950;">
         <form action="./editprojet.php" method="POST">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Title</label>
