@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/search.css" />
-    <link rel="stylesheet" href="css/header_footer.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+    <link rel="stylesheet" href="../css/header_footer.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -17,7 +17,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="#"
-            ><img src="images/PeoplePerTask.png" style="width: 12rem" alt=""
+            ><img src="../images/PeoplePerTask.png" style="width: 12rem" alt=""
           /></a>
           <button
             class="navbar-toggler"
@@ -33,12 +33,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0 auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html"
+                <a class="nav-link active" aria-current="page" href="index.php"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="about.php">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"
@@ -46,11 +46,11 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="contact.php">Contact</a>
               </li>
             </ul>
             <form class="d-flex nav_btn" role="search">
-              <a href="sign.html" class="btn btn-primary">Connect</a>
+              <a href="sign.php" class="btn btn-primary">Connect</a>
             </form>
             <i id="dark-mode-toggle" class="fas fa-moon ps-3 "></i>
           </div>
@@ -79,17 +79,17 @@
               <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                  <img src="images/faizur-rehman-pHPzdEHN6Os-unsplash.jpg" alt="unsplash" />
+                  <img src="../images/faizur-rehman-pHPzdEHN6Os-unsplash.jpg" alt="unsplash" />
                 </div>
                 <div class="swiper-slide">
                   <img
-                    src="images/windows-MYomVPpR5FU-unsplash.jpg"
+                    src="../images/windows-MYomVPpR5FU-unsplash.jpg"
                     alt="unsplash"
                   />
                 </div>
                 <div class="swiper-slide">
                   <img
-                    src="images/pedro-henrique-santos-4IoS45J9pmk-unsplash.jpg"
+                    src="../images/pedro-henrique-santos-4IoS45J9pmk-unsplash.jpg"
                     alt="unsplash"
                   />
                 </div>
@@ -182,7 +182,7 @@
                 <div class="footer-logo">
                   <a href="index.html"
                     ><img
-                      src="images/PeoplePerTask.png"
+                      src="../images/PeoplePerTask.png"
                       class="img-fluid"
                       alt="logo"
                   /></a>
@@ -212,7 +212,7 @@
                   <h3>Links</h3>
                 </div>
                 <ul>
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="#">about</a></li>
                   <li><a href="#">Searsh</a></li>
                   <li><a href="#">Contact</a></li>
@@ -254,8 +254,8 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/search.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/search.js"></script>
     <script
       src="https://kit.fontawesome.com/e80051e55f.js"
       crossorigin="anonymous"

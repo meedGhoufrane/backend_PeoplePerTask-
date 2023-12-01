@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/about-contact.css">
-    <link rel="stylesheet" href="css/header_footer.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/about-contact.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
     <title>PeoplePerTask</title>
 </head>
 
@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
+                <a class="navbar-brand" href="#"><img src="../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -24,20 +24,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0 auto;">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="about.php">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="search.html">Search</a>
+                            <a class="nav-link active" aria-current="page" href="search.php">Search</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
                     </ul>
                     <form class="d-flex nav_btn" role="search">
-                        <a href="sign.html" class="btn btn-primary">Connect</a>
+                        <a href="sign.php" class="btn btn-primary">Connect</a>
                     </form>
                     <i id="dark-mode-toggle" class="fas fa-moon ps-3 "></i>
                 </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-md-6 ">
                 <div class="ml-3">
-                    <img src="images/Group 38.svg" class="img-fluid " alt="section-hero image">
+                    <img src="../images/Group 38.svg" class="img-fluid " alt="section-hero image">
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="section-founder container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/Group 1000004885.svg" class="img-fluid" alt="section-hero image">
+                    <img src="../images/Group 1000004885.svg" class="img-fluid" alt="section-hero image">
                 </div>
                 <div class="col-md-6 pt-5">
                     <p>Meet Mohammed Elarbi EL Hattab, the visionary entrepreneur behind FreelanceNow. With a background
@@ -179,7 +179,7 @@
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="images/PeoplePerTask.png" class="img-fluid"
+                                <a href="index.php"><img src="../images/PeoplePerTask.png" class="img-fluid"
                                         alt="logo"></a>
                             </div>
                             <div class="footer-text">
@@ -203,10 +203,10 @@
                                 <h3>Links</h3>
                             </div>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">about</a></li>
-                                <li><a href="search.html">Searsh</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="index.php">Home</a></li>
+                                <li><a href="about.php">about</a></li>
+                                <li><a href="search.php">Searsh</a></li>
+                                <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -242,8 +242,8 @@
         </div>
     </footer>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/about.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/about.js"></script>
     <script src="https://kit.fontawesome.com/e80051e55f.js" crossorigin="anonymous"></script>
 </body>
 

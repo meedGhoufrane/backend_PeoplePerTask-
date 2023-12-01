@@ -4,13 +4,12 @@ require 'cnx.php';
 $id = $_GET['id'];
 $name = $_POST['Nom'];
 $email = $_POST['email'];
-$otherinfo = $_POST['otherinfo'];
+
 
 $sql = "UPDATE user
         SET
         Nom = '$name',
-        email = '$email',
-        otherinfo = '$otherinfo'
+        email = '$email'
         WHERE
             id = $id";
     

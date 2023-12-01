@@ -1,3 +1,11 @@
+
+<?php
+include '../fillesign/login.php';
+
+
+?>
+
+
 <div class="row ">
     <div class="col-1" id="column1">
         <a href="#"><img id="logo" src="../images/PeoplePerTask.png" alt="logo">
@@ -40,7 +48,7 @@
         <div id="nav-bar-section2">
         <img id="notification" src="../images/carbon_notification-new.svg" alt="notification-icon">
         <div id="profil">
-        <h1>Welcome back,Yasser</h1>
+        <h1><samp class="text-red-500"><?php echo'Welcome back, ' . $_SESSION['name'] ; ?></samp></h1>
         <img src="../images/profil.png" alt="profil-logo">
         </div>
         </div>

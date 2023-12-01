@@ -14,12 +14,14 @@ CREATE table user(
     otherinfo VARCHAR(40)
 )
 
+ALTER TABLE user MODIFY COLUMN passwords VARCHAR(255);
+
 insert into user (Nom,passwords,email,otherinfo) values("ahmed","ahmed6789","ahmed7@gmail.com","otherinfo2");
-select * from user 
+
+select * from user ;
 
 
-DELETE from user where id = 1;
-
+DELETE from user where id = 9;
 CREATE Table categories(
     id int PRIMARY KEY AUTO_INCREMENT,
     nomcat varchar(40)
@@ -28,8 +30,8 @@ CREATE Table categories(
 
 select * from categories
 
-delete from categories where id = 4;
-INSERT INTO categories (nomcat) VALUES ('nomcat3');
+delete from categories where id = 5;
+INSERT INTO categories (nomcat) VALUES ('UX-UI');
 
 CREATE TABLE souscategories (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -39,7 +41,7 @@ CREATE TABLE souscategories (
 );
 select * from souscategories
 
-insert into souscategories (nomsuscatgs,idcat) values('nomsuscatgs5',1);
+insert into souscategories (nomsuscatgs,idcat) values('nomsuscatgs5',11);
 ALTER TABLE souscategories
 ADD CONSTRAINT fks
 FOREIGN KEY (idcat) REFERENCES categories(id)
@@ -54,8 +56,9 @@ create table freelances(
     FOREIGN KEY (iduser) REFERENCES user(id)
 )
 
-select * from freelances
+select * from freelances;
 
+delete from freelances where id = 2;
 SELECT user.nom
 FROM Projets
 JOIN user ON Projets.iduser = user.id;
@@ -83,7 +86,7 @@ ON UPDATE CASCADE;
 select * from Projets
 
 INSERT INTO Projets (Titre, Descriptions, idsoc, iduser, idcat)
-VALUES('title1', 'disc1', 2, 9, 2);
+VALUES('title2', 'disc2', 7, 40, 11);
 
 create Table Offres(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -96,6 +99,29 @@ create Table Offres(
 )
 
 select * from Offres
+
+
+
+SELECT Offres.id AS id,
+       Offres.Montant AS Montant,
+       Offres.Délai AS Delai,
+       freelances.nom AS nom,
+       Projets.Titre AS Titre
+FROM Offres
+INNER JOIN freelances ON freelances.id = Offres.idfre
+INNER JOIN Projets ON Projets.id = Offres.id;
+
+
+
+
+select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nomcat as cetegory
+ from projets INNER JOIN categories INNER JOIN user on user.id = projets.iduser 
+ and categories.id= projets.idcat;
+
+
+
+
+insert into offres (montant,Délai,idfre,idprojet) values(30,'2023-12-07',4,33);
 
 create Table Temoignages(
     id int PRIMARY KEY AUTO_INCREMENT,
@@ -138,7 +164,7 @@ BEGIN
 END
 
 select* from user;
-call InsertIntofreelances(2,"anas kanabawi","ui",10)
+call InsertIntofreelances(4,"hassan","front end end",38)
 
 select * from user;
 
@@ -171,3 +197,12 @@ ON UPDATE CASCADE;
 select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nomcat as cetegory
  from projets INNER JOIN categories INNER JOIN user on user.id = projets.iduser 
  and categories.id= projets.idcat;
+
+
+
+--  enum roles 
+-- {
+--     case clinet;
+--     case admins;
+--     case freelance;
+-- }

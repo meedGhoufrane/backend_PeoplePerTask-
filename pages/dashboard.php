@@ -1,6 +1,13 @@
 <?php 
 
 require 'cnx.php';
+if(!empty($_SESSION["id"])){
+    $id = $_SESSION["id"];
+    $result = mysqli_query(cnx,"SELECT * from user WHERE  id = $id");
+    $row = mysqli_fetch_assoc($result);
+}else{
+    header("location: sign.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +42,7 @@ a{
 </style>
 <body>
 <?php include '../component/slidbar.php'?>
-<h1 class="users-header">All categories:</h1>
+<h1 class="users-header"><?php echo $row["Nom"]?></h1>
 <div id="table-container">
 
 

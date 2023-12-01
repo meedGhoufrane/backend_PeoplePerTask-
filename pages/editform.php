@@ -38,12 +38,11 @@
         while ($value = $result->fetch_assoc()){
             $old_name = $value['Nom'];
             $old_email = $value['email'];
-            $old_otherinfo = $value['otherinfo'];
         }
 
         ?>
 
-        <div id="content" style ="background: blanchedalmond;">
+        <div id="content" style ="background: #e5a950;">
         <form action="./edit.php?id=<?=$id?>" method="POST" >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >name</label>
@@ -57,10 +56,7 @@
             <label for="exampleInputPassword1" class="form-label">email</label>
             <input type="email" class="form-control"  name="email" id="email" value ="<?=$old_email?>">
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">otherinfo</label>
-            <input type="text" class="form-control"  name="otherinfo" id="otherinfo" value ="<?= $old_otherinfo?>">
-        </div>
+       
         
        
         <button id="button" type="submit" class="btn btn-warning ">edit</button>

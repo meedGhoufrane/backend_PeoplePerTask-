@@ -43,10 +43,7 @@ include 'cnx.php';
             <label for="exampleInputPassword1" class="form-label">email</label>
             <input type="email" class="form-control"  name="email" id="email">
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">otherinfo</label>
-            <input type="text" class="form-control"  name="otherinfo" id="otherinfo">
-        </div>
+       
         
        
         <button id="button" type="submit" class="btn btn-primary ">Submit</button>

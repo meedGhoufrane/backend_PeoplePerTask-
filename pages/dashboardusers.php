@@ -1,6 +1,9 @@
 <?php 
 
 require 'cnx.php';
+// if (!isset($_SESSION["id"])) {
+//     header('location: sign.php');
+// }
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +42,7 @@ a{
 <div id="table-container">
 
 <!-- Button trigger modal -->
-<a   class="btn btn-success" href="createform.php">
+<a   class="btn btn-success" href="./createform.php">
 Create new user
 </a>
 <table id="example" class="table table-striped" style="width:100%">
@@ -48,28 +51,27 @@ Create new user
                 <th>id</th>
                 <th>Name</th>
                 <th>email</th>
-                <th>otherinfo</th>
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             include 'cnx.php';
-            $res = $cnx->query('select id , Nom , email, otherinfo from user ');
+            $res = $cnx->query('SELECT * from user');
             foreach($res as $value):
             ?>
             <tr>
                 <td><?=$value['id'] ?></td>
                 <td><?=$value['Nom'] ?></td>
                 <td><?=$value['email'] ?></td>
-                <td><?=$value['otherinfo'] ?></td>
+                
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <div>
                         <form class="pr-3" method='GET'>
                             <button type="button" class="btn btn-danger " name = "delete">
                                     <a  class="hover:bg-red-500 hover:text-white text-red-500 rounded-md p-2" 
-                                    href="delete.php?id=<?=$value['id']?>" onclick="confirmDelete(event)">Delete
+                                    href="./delete.php?id=<?=$value['id']?>" onclick="confirmDelete(event)">Delete
                                 </a>
                             </button>
                          </form>
@@ -77,7 +79,7 @@ Create new user
                     <form class="pr-3" method='GET'>
                             <button type="button" class="btn btn-warning " name = "edit">
                                     <a  class="hover:bg-red-500 hover:text-white text-red-500 rounded-md p-2" 
-                                    href="editform.php?id=<?=$value['id']?>" >update
+                                    href="./editform.php?id=<?=$value['id']?>" >update
                                 </a>
                             </button>
                          </form>
