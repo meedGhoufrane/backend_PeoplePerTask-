@@ -1,8 +1,10 @@
 
 <?php
 include '../fillesign/login.php';
+require '../pages/cnx.php';
 
-
+session_write_close();
+session_start();
 ?>
 
 
@@ -42,16 +44,18 @@ include '../fillesign/login.php';
         </div>
         </div>
         </div>
-<div class="col-11" id="column2" style ="background: #e5a950;">
+<div class="col-11" id="column2" >
     <div id="nav-bar">
-        <img id="menu-logo" style="height: 40px;" src="../images/more.png" alt="menu">
+        <img id="menu-logo" style="height: 40px; " src="../images/more.png" alt="menu">
         <div id="nav-bar-section2">
-        <img id="notification" src="../images/carbon_notification-new.svg" alt="notification-icon">
-        <div id="profil">
-        <h1><samp class="text-red-500"><?php echo'Welcome back, ' . $_SESSION['name'] ; ?></samp></h1>
-        <img src="../images/profil.png" alt="profil-logo">
+        <img id="notification"  src="../images/carbon_notification-new.svg" alt="notification-icon">
+        <div id="profil" style ="margin-right: 2rem;">
+            <h1><samp class="text-red-500" style= "font-family : poppins"><?php echo'Welcome back, ' . $_SESSION['name'] ; ?></samp></h1>
+            <a href="../profiles/profile.php"><img  id="img" src="../pages/path/to/secure/directory/<?= $_SESSION['img'] ?>" 
+            alt="profil" style=" border-radius : 50%"></a>
+            <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../fillesign/logout.php" >logout</a>
         </div>
         </div>
         </div>
-
-        
+       
+                

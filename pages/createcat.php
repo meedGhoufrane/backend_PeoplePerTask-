@@ -29,15 +29,12 @@ include 'cnx.php';
 <?php include '../component/slidbar.php'?>
 
 <section class ="form">
-        <div id="content" style ="background: #e5a950;">
+        <div id="content" >
         <form action="./insertcat.php" method="POST" >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >name categories</label>
             <input type="text" class="form-control" name="nomcat" id="nomcat">
         </div>
-      
-        
-       
         <button id="button" type="submit" class="btn btn-primary ">Submit</button>
         </form>
         </div> 

@@ -41,7 +41,7 @@
 
         ?>
 
-        <div id="content" style ="background: #e5a950;">
+        <div id="content" >
         <form action="./editcategories.php?id=<?=$id?>" method="POST" >
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >name categories</label>

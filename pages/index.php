@@ -1,7 +1,7 @@
 <?php
 require 'cnx.php';
 session_start();
-
+if (isset($_SESSION["name"])) {
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +24,16 @@ session_start();
     #logoutbtn{
         margin-left: 1rem;
 
+    }
+    #img{
+        width: 13%;
+        height: 13%;
+        border-radius: 50%;
+        float: inline-end;
+
+    }
+    .profile{
+        width: 30%;
     }
   </style>
 
@@ -48,7 +58,7 @@ session_start();
                     <a class="nav-link active" aria-current="page" href="search.php">Searsh</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                   </li>
                 </ul>
                 <?php if(!isset($_SESSION['name'])){?>
@@ -56,7 +66,7 @@ session_start();
                   <a href="sign.php" class="btn btn-primary">Connect</a>
                 </form>
                 <?php }else{?>
-                    <?php echo $_SESSION['name'];?>
+                    <a href="profile.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
                     <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../fillesign/logout.php" >logout</a>
                     <?php };
                      ?>
@@ -72,7 +82,7 @@ session_start();
             <div class="col-lg-9 p-5 mx-auto text-center">
                 <h1 style="color: #6298f3;">Find Your Perfect <span style="color: #f39c12;">Freelance</span> Match</h1>
                 <p class="mt-5">Welcome to PeoplePerTask, your go-to destination for connecting with skilled professionals for all your project needs. Our user-friendly platform simplifies the process of finding the perfect freelancer, whether you require a creative designer, a proficient virtual assistant, or a tech-savvy developer. With our commitment to transparency and excellence, we ensure that every task is completed to the highest standard. Join our community today and discover how PeoplePerTask can help bring your projects to life</p>
-                <a href="sign.php" class="mt-5 btn btn-primary">Sign in</a>
+                <!-- <a href="sign.php" class="mt-5 btn btn-primary">Sign in</a> -->
             </div>
         </div>
     </div>
@@ -92,7 +102,7 @@ session_start();
     <section class="portfolio section">
         <div class="container">
         <div class="top-side">
-            <h2 class="title">Categories Filter</h2>
+            <h2 class="title">Project Filter</h2>
         </div>
     
         <div class="filters">
@@ -108,22 +118,25 @@ session_start();
             <div class="row">
         <?php
         require 'cnx.php';
-        $q = "SELECT * from categories";
+        $q = "SELECT Projets.Titre , Projets.Descriptions , user.nom , categories.nomcat from Projets inner JOIN categories
+         INNER JOIN user on user.id = Projets.iduser and categories.id = Projets.idcat;";
         $res = mysqli_query($cnx,$q);
         while($row = mysqli_fetch_assoc($res))
         {
         ?>
-        
             <!-- front-end projects start -->
             <div class="col-md-4 mb-4 all prog">
                 <div class="card">
                     <img src="../images/devweb.png" class="card-img-top" alt="">
                     <div class="card-body">
-                      <h5 class="card-title"><?php echo $row['nomcat'] ?></h5>
-                      <p class="card-text">If you are looking for a Professional WordPress HTML CSS Website Developer to develop your business website then you are in the right place.</p>
+                      <h5 class="card-title"><?php echo $row['Titre'] ?></h5>
+                      <p class="card-text"><?php echo $row['Descriptions'] ?></p>
                       <i class="fa-solid fa-star"></i> <span>  55</span> (62) <br>
                       <i class="fa-solid fa-eye"></i><span>  122</span> <br><br>
-                      <a href="#" class="btn btn-primary btn_projet">Details</a>
+                      <?php if (isset($_SESSION['email']) && isset($_SESSION['role']) ): 
+                        if($_SESSION['role'] == 'freelancer'){?>
+                            <a class="btn btn-primary me-2 sign-style-color" href="./createoffers/offer.php" role="button">Apply now</a>  
+                        <?php }endif; ?>
                       <strong>120 $</strong>
                     </div>
                 </div>
@@ -448,3 +461,10 @@ session_start();
 
 </body>
 </html>
+<?php
+    } else{
+    header('Location: sign.php');
+    }
+
+
+?>

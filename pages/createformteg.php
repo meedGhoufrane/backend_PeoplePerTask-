@@ -27,27 +27,18 @@ include 'cnx.php';
 </style>
 <body>
 <?php include '../component/slidbar.php'?>
-
 <section class ="form" >
         <div id="content">
-        <form action="./insertusers.php" method="POST" enctype="multipart/form-data">
+        <form action="./inserttest.php" method="POST" >
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label" >name</label>
-            <input type="text" class="form-control" name="Nom" id="nom">
+            <label for="exampleInputPassword1" class="form-label">Commentaire</label>
+            <input type="text" class="form-control"  name="Commentaire" id="Commentaire">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">passwords</label>
-            <input type="password" class="form-control"  name="passwords" id="passwords">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">email</label>
-            <input type="email" class="form-control"  name="email" id="email">
+            <label for="exampleInputPassword1" class="form-label">path for img</label>
+            <input type="text" class="form-control"  name="path" id="path">
         </div>  
-        <div class="mb-3">
-            <label for="img" class="form-label">choose image </label>
-            <input type="file" class="form-control" accept="image/png , image/jpg, image/jpeg"  name="img" id="img">
-        </div>  
-        <button id="button" type="submit" class="btn btn-primary ">Submit</button>
+        <button id="button" type="submit" class="btn btn-primary ">create </button>
         </form>
         </div> 
 </section>

@@ -1,6 +1,7 @@
 <?php
 
 require 'cnx.php';
+session_start();
 
 $Titre = $_POST['Title'];
 $Descriptions = $_POST['Descriptions'];
@@ -14,7 +15,7 @@ $rest = mysqli_query($cnx,$sql);
 if ($rest)
     header("location:dashboardtrend.php");
 
-mysqli_close($cnx);
+
 ?>
 
 

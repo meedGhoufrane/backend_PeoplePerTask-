@@ -1,7 +1,7 @@
 <?php
 require 'cnx.php';
 
-$name = $_POST['nomcat'];
+$name = htmlspecialchars($_POST['nomcat']);
 
     
 

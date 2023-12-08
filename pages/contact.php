@@ -1,16 +1,41 @@
+<?php
+require 'cnx.php';
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/about-contact.css">
     <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+   
     <title>PeoplePerTask</title>
 </head>
-<body>
 
-    <header>
+<body>
+<style>
+    #logoutbtn{
+            margin-left: 1rem;
+    
+        }
+        #img{
+        width: 13%;
+        height: 13%;
+        border-radius: 50%;
+        float: inline-end;
+
+    }
+    .profile{
+        width: 30%;
+    }
+</style>
+
+<header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
               <a class="navbar-brand" href="#"><img src="../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
@@ -26,20 +51,27 @@
                     <a class="nav-link" href="about.php">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="search.php">Search</a>
+                    <a class="nav-link active" aria-current="page" href="search.php">Searsh</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
                   </li>
                 </ul>
+                <?php if(!isset($_SESSION['name'])){?>
                 <form class="d-flex nav_btn" role="search">
                   <a href="sign.php" class="btn btn-primary">Connect</a>
                 </form>
-                <i id="dark-mode-toggle" class="fas fa-moon ps-3"></i>
+                <?php }else{?>
+                    <a href="profile.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
+                    <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../fillesign/logout.php" >logout</a>
+                    <?php };
+                     ?>
+                <i id="dark-mode-toggle" class="fas fa-moon ps-3 "></i>
               </div>
             </div>
           </nav>
     </header>
+
     <div class=" section-contact container pt-5">
         <div class="row">
           <div class="col-md-6 mb-4">

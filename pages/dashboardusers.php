@@ -1,11 +1,8 @@
 <?php 
-
-require 'cnx.php';
-// if (!isset($_SESSION["id"])) {
-//     header('location: sign.php');
-// }
-
-?>
+session_start();
+if (isset($_SESSION["name"])) {
+    //code here
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +32,11 @@ a{
         color:#fff;
         text-decoration:none;
     }
+    .imgpro{
+        width: 5%;
+        height: 5%;
+        border-radius: 50%;
+    }
 </style>
 <body>
 <?php include '../component/slidbar.php'?>
@@ -51,6 +53,7 @@ Create new user
                 <th>id</th>
                 <th>Name</th>
                 <th>email</th>
+                <th>image</th>
                 <th>action</th>
             </tr>
         </thead>
@@ -64,6 +67,7 @@ Create new user
                 <td><?=$value['id'] ?></td>
                 <td><?=$value['Nom'] ?></td>
                 <td><?=$value['email'] ?></td>
+                <td> <img class="imgpro" src="path/to/secure/directory/<?php echo $value['path_img'] ?>" height="30%" width="30%" alt="///"></td>
                 
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -89,8 +93,6 @@ Create new user
             <?php endforeach;?>
         </tbody>
     </table>
-    
-
 </div>
 </div> 
 </div>
@@ -99,6 +101,10 @@ Create new user
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="../js/dashboardhome.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="https://kit.fontawesome.com/e80051e55f.js" crossorigin="anonymous"></script>
+
     <script>
         function confirmDelete(event) {
             if (!confirm('Your are about to delete this item')) {
@@ -110,3 +116,10 @@ Create new user
     
 </body>
 </html>
+<?php 
+    } else{
+    header('Location: sign.php');
+    }
+
+
+?>

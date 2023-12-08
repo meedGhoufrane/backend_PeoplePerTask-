@@ -2,7 +2,8 @@
 
 require '../pages/cnx.php';
 
-session_start();
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['emaillog']) && isset($_POST['passwordlog'])) {
@@ -25,20 +26,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_stmt_get_result($stmt);
 
         if ($row = mysqli_fetch_assoc($result)) {
+            session_start();
             // Email exists in the database
             if (password_verify($password, $row['passwords'])) {
                 // Password is valid
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['name'] = $row['Nom'];
+                $_SESSION['role'] = $row['role'];
+                $_SESSION['img'] = $row['path_img'];
 
-                // Redirect based on user role
-                if ($row['role'] == 'user') {
+             
+                if ($row['role'] == 'client') {
                     $_SESSION["email"] = $email;
                     header("Location: ../pages/index.php");
                     exit();
                 } elseif ($row['role'] == 'admin') {
                     $_SESSION["email"] = $email;
-                    header('Location: ../pages/dashboardusers.php');
+                    header('Location: ../pages/dashboard.php');
+                    exit();
+                }
+                elseif ($row['role'] == 'freelancer') {
+                    $_SESSION["email"] = $email;
+                    header('Location: ../pages/index.php');
                     exit();
                 }
             } else {

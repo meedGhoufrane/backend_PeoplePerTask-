@@ -1,21 +1,23 @@
 <?php 
-
 require 'cnx.php';
+session_start();
 
-?>
-<!DOCTYPE html>
+if (isset($_SESSION["name"])) {
+    //code here
+    ?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/dashboardtrend.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/dashboardusers.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/dashboardtrend.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/dashboardusers.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
@@ -38,25 +40,31 @@ a{
 <h1 class="users-header">All temoignages:</h1>
 <div id="table-container">
 
+<!-- <a   class="btn btn-success" href="./inserttemg.php">
+Create new temoignages
+</a> -->
+
+
 <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>id</th>
                 <th>Commentaire</th>
-                <th>iduser</th>
+                <th>user Name</th>
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             include 'cnx.php';
-            $res = $cnx->query('select * from temoignages ');
+            $res = $cnx->query('SELECT  Temoignages.id as id  ,Temoignages.Commentaire , user.Nom  FROM Temoignages INNER JOIN user ON Temoignages.iduser = user.id;
+            ');
             foreach($res as $value):
             ?>
             <tr>
                 <td><?=$value['id'] ?></td>
                 <td><?=$value['Commentaire'] ?></td>
-                <td><?=$value['iduser'] ?></td>
+                <td><?=$value['Nom'] ?></td>
               
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -96,3 +104,9 @@ a{
     
 </body>
 </html>
+
+<?php
+    } else{
+    header('Location: sign.php');
+    }
+?>

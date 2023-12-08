@@ -28,7 +28,7 @@ include 'cnx.php';
 <body>
 <?php include '../component/slidbar.php'?>
 <section class ="form">
-    <div id="content" style ="background: #e5a950;">
+    <div id="content" >
         <form action="./createprojet.php" method="POST">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >Title</label>

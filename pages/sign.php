@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +119,7 @@
                 <img src="../images/in.svg"> 
             </div>
             <span>or use your email for registration</span>
-            <form class="w-50" method="POST" action ="../fillesign/singqry.php">
+            <form class="w-50" method="POST" action ="../fillesign/singqry.php" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="Name" style="font-size: 12px;" class="form-label">Name</label>
                     <input type="text" style="width: 100%;" class="form-control border-bottom border-0 border" Name="Name" id="Name" aria-describedby="emailHelp">
@@ -128,6 +129,10 @@
                     <input type="email" style="width: 100%;" class="form-control border-bottom border-0 border" Name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
+                    <label for="img" class="form-label">choose image </label>
+                    <input type="file" class="form-control" accept="image/png , image/jpg, image/jpeg"  name="img" id="img">
+                </div>  
+                <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label" style="font-size: 12px;">Password</label>
                     <input type="password" style="width: 100%;" class="form-control border-bottom border-0 border" Name="Password" id="exampleInputPassword1">
                 </div>
@@ -135,6 +140,13 @@
                     <label for="exampleInputPassword1" class="form-label" style="font-size: 12px;">repeat ur Password</label>
                     <input type="password" style="width: 100%;" class="form-control border-bottom border-0 border" Name="comfirmPassword" id="exampleInputPassword2">
                 </div>
+                <div class="mb-3">
+                    <input type="radio" style="" class="" value="client" Name="role" id="">
+                    <label for="exampleInputPassword1" class="form-label" style="font-size: 12px;">client </label>
+                    <input type="radio" style="" class="" value="freelancer" Name="role" id="">
+                    <label for="exampleInputPassword1" class="form-label"  value="freelancer" style="font-size: 12px;">freelancer</label>
+                </div>
+               
                 <span class="mobile"><a href="signInMobile.html">sign in</a></span>
                 <button type="submit"  class="btn text-white rounded-pill btn-outline-primary" style="background-color: #3498DB; width:164px; height:39px" id="submit">Create account</button> 
             </form>

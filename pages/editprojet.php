@@ -1,11 +1,13 @@
 <?php
 require 'cnx.php';
 
-$id = $_GET['id'];
-$Titre = $_POST['Titre'];
-$Descriptions = $_POST['Descriptions'];
-$idcat = $_POST['idcat'];
-$iduser = $_POST['iduser'];
+
+
+$id = $_POST['id'];
+$Titre = htmlspecialchars($_POST['Title']);
+$Descriptions =htmlspecialchars($_POST['Descriptions']);
+$idcat = htmlspecialchars($_POST["idcat"]);
+$iduser = htmlspecialchars($_POST["iduser"]);
 
 $sql = "UPDATE Projets
         SET

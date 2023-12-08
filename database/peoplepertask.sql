@@ -11,10 +11,11 @@ CREATE table user(
     Nom varchar(40),
     passwords varchar(10),
     email VARCHAR(40),
-    otherinfo VARCHAR(40)
+    role VARCHAR(40)
 )
 
-ALTER TABLE user MODIFY COLUMN passwords VARCHAR(255);
+
+ALTER TABLE Projets MODIFY COLUMN Descriptions VARCHAR(255);
 
 insert into user (Nom,passwords,email,otherinfo) values("ahmed","ahmed6789","ahmed7@gmail.com","otherinfo2");
 
@@ -48,20 +49,6 @@ FOREIGN KEY (idcat) REFERENCES categories(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
-create table freelances(
-    id int PRIMARY KEY AUTO_INCREMENT,
-    Nom VARCHAR(30),
-    Competences VARCHAR(40),
-    iduser int ,
-    FOREIGN KEY (iduser) REFERENCES user(id)
-)
-
-select * from freelances;
-
-delete from freelances where id = 2;
-SELECT user.nom
-FROM Projets
-JOIN user ON Projets.iduser = user.id;
 
 create table Projets(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -75,7 +62,11 @@ create table Projets(
     FOREIGN KEY (idsoc) REFERENCES souscategories(id)
 )
 
+select Projets.Titre , Projets.Descriptions , user.nom , categories.nomcat from Projets inner JOIN categories INNER JOIN user on user.id = Projets.iduser and categories.id = Projets.idcat;
 
+select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nomcat as cetegory
+ from projets INNER JOIN categories INNER JOIN user on user.id = projets.iduser 
+ and categories.id= projets.idcat;
 
 ALTER TABLE Projets
 ADD CONSTRAINT  CONSTRAINT3
@@ -83,7 +74,8 @@ FOREIGN KEY (idsoc) REFERENCES souscategories(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
-select * from Projets
+select * from USER
+
 
 INSERT INTO Projets (Titre, Descriptions, idsoc, iduser, idcat)
 VALUES('title2', 'disc2', 7, 40, 11);
@@ -92,11 +84,14 @@ create Table Offres(
     id INT PRIMARY KEY AUTO_INCREMENT,
     Montant FLOAT ,
     Délai DATE,
-    idfre int ,
+    iduser int ,
     idprojet int ,
     FOREIGN KEY (idprojet) REFERENCES Projets(id),
-    FOREIGN KEY (idfre) REFERENCES freelances(id)
+    FOREIGN KEY (iduser) REFERENCES user(id)
 )
+
+insert into Offres(Montant,Délai,iduser,idprojet) values(68,'2023-01-19',68,38);
+
 
 select * from Offres
 
@@ -104,19 +99,16 @@ select * from Offres
 
 SELECT Offres.id AS id,
        Offres.Montant AS Montant,
-       Offres.Délai AS Delai,
-       freelances.nom AS nom,
+       Offres.Délai AS Délai,
+       user.Nom AS Nom,
        Projets.Titre AS Titre
 FROM Offres
-INNER JOIN freelances ON freelances.id = Offres.idfre
-INNER JOIN Projets ON Projets.id = Offres.id;
+LEFT JOIN user ON user.id = Offres.iduser
+left JOIN Projets ON Projets.id = Offres.id;
 
 
 
 
-select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nomcat as cetegory
- from projets INNER JOIN categories INNER JOIN user on user.id = projets.iduser 
- and categories.id= projets.idcat;
 
 
 
@@ -126,15 +118,16 @@ insert into offres (montant,Délai,idfre,idprojet) values(30,'2023-12-07',4,33);
 create Table Temoignages(
     id int PRIMARY KEY AUTO_INCREMENT,
     Commentaire varchar(40),
+
     iduser int ,
     FOREIGN KEY (iduser) REFERENCES user(id)
 )
 
+
 insert into temoignages (Commentaire,iduser) values('Commentaire7',9);
 select * from temoignages
 
-alter table Témoignages
-RENAME  to Temoignages
+
 
 CREATE PROCEDURE InsertIntoTable
 (
@@ -147,7 +140,7 @@ BEGIN
     VALUES (id, Commentaire,iduser);
 END
 
-call InsertIntoTable(2,"Commentaire2",2)
+call InsertIntoTable(5,"Commentaire5",38)
 
 select * from temoignages
 
@@ -199,10 +192,13 @@ select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nom
  and categories.id= projets.idcat;
 
 
+select Temoignages.Commentaire , user.Nom  from Temoignages INNER JOIN user on Temoignages.iduser = user.id;
 
---  enum roles 
--- {
---     case clinet;
---     case admins;
---     case freelance;
--- }
+
+
+ enum roles('admins','admins','freelance');
+{
+    case user ;
+    case admins;
+    case freelance;
+}
