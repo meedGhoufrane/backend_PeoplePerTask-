@@ -67,7 +67,7 @@ Create new user
                 <td><?=$value['id'] ?></td>
                 <td><?=$value['Nom'] ?></td>
                 <td><?=$value['email'] ?></td>
-                <td> <img class="imgpro" src="path/to/secure/directory/<?php echo $value['path_img'] ?>" height="30%" width="30%" alt="///"></td>
+                <td> <img class="imgpro" src="path/to/secure/directory/<?= $_SESSION['img'] ?>" height="30%" width="30%" alt="///"></td>
                 
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">

@@ -45,6 +45,18 @@ if (isset($_SESSION["name"])) {
        
             
         }
+        #img{
+        width: 13%;
+        height: 13%;
+        border-radius: 50%;
+        float: inline-end;
+
+    }
+    .profile{
+        width: 30%;
+        margin-right: 1rem;
+
+    }
       
     </style>
     <body>
@@ -52,7 +64,7 @@ if (isset($_SESSION["name"])) {
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-              <a class="navbar-brand" href="#"><img src="../../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
+              <a class="navbar-brand" href="index.php"><img src="../../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars" style="color: #6298f3;"></i>
               </button>
@@ -73,11 +85,11 @@ if (isset($_SESSION["name"])) {
                 </ul>
                 <?php if(!isset($_SESSION['name'])){?>
                 <form class="d-flex nav_btn" role="search">
-                  <a href="../sign.php" class="btn btn-primary">Connect</a>
+                  <a href="sign.php" class="btn btn-primary">Connect</a>
                 </form>
                 <?php }else{?>
-                    <?php echo $_SESSION['name'];?>
-                    <a  id="logoutbtn" type="button" style="margin-left: 2rem;" class="btn btn-danger" role="botton" href="../../fillesign/logout.php" >logout</a>
+                    <a href="profile.php" class="profile"><img  id="img" src="../../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
+                    <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../../fillesign/logout.php" >logout</a>
                     <?php };
                      ?>
                 <i id="dark-mode-toggle" class="fas fa-moon ps-3 "></i>

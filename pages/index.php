@@ -9,9 +9,9 @@ if (isset($_SESSION["name"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <title>PeoplePerTask</title>
 </head>
@@ -66,7 +66,7 @@ if (isset($_SESSION["name"])) {
                   <a href="sign.php" class="btn btn-primary">Connect</a>
                 </form>
                 <?php }else{?>
-                    <a href="profile.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
+                    <a href="profileuser.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
                     <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../fillesign/logout.php" >logout</a>
                     <?php };
                      ?>
@@ -107,6 +107,9 @@ if (isset($_SESSION["name"])) {
     
         <div class="filters">
             <ul>
+                <?php if($_SESSION['role'] == 'client'){?>
+                 <a class="btn btn-success me-2 sign-style-color" href="inserproject.php" role="button">Create a new Project </a> 
+                <?php }?>
                 <li class="active" data-filter="*"> All</li>
                 <li data-filter=".graphic">Graphic & Design</li>
                 <li data-filter=".prog">Programming</li>
@@ -118,7 +121,7 @@ if (isset($_SESSION["name"])) {
             <div class="row">
         <?php
         require 'cnx.php';
-        $q = "SELECT Projets.Titre , Projets.Descriptions , user.nom , categories.nomcat from Projets inner JOIN categories
+        $q = "SELECT Projets.id as id , Projets.Titre , Projets.Descriptions , user.nom , categories.nomcat from Projets inner JOIN categories
          INNER JOIN user on user.id = Projets.iduser and categories.id = Projets.idcat;";
         $res = mysqli_query($cnx,$q);
         while($row = mysqli_fetch_assoc($res))
@@ -135,9 +138,10 @@ if (isset($_SESSION["name"])) {
                       <i class="fa-solid fa-eye"></i><span>  122</span> <br><br>
                       <?php if (isset($_SESSION['email']) && isset($_SESSION['role']) ): 
                         if($_SESSION['role'] == 'freelancer'){?>
-                            <a class="btn btn-primary me-2 sign-style-color" href="./createoffers/offer.php" role="button">Apply now</a>  
-                        <?php }endif; ?>
-                      <strong>120 $</strong>
+                            <a class="btn btn-success me-2 sign-style-color" href="./createoffers/offer.php" role="button">Apply now</a>  
+                            <?php }endif; ?>
+                            <a class="btn btn-warning me-2 sign-style-color" href="singlepageproject.php?id=<?=$row['id']?>" role="button">more</a>  
+                            <strong>120 $</strong>
                     </div>
                 </div>
             </div>
@@ -270,7 +274,8 @@ if (isset($_SESSION["name"])) {
           <h2 class="mb-5 text-center">The Most Popular Offers</h2>
           <?php
                     require 'cnx.php';
-                    $q = "SELECT * from Offres";
+                    $q = "SELECT   offres.Montant AS  Montant ,offres.Délai as Délai  ,user.Nom as iduser , projets.Titre AS  Titre from offres INNER JOIN user INNER JOIN projets
+                    on (user.id = offres.iduser and projets.id =  offres.idprojet) ;";
                     $res = mysqli_query($cnx,$q);
                     while($row = mysqli_fetch_assoc($res)){
                     ?>
@@ -278,12 +283,12 @@ if (isset($_SESSION["name"])) {
             <div class="col_offres">
                 <img src="../images/offre.png" width="100%" alt="Offre">
                 <div class="p-4">
-                    <h3>Développeur FullStack</h3>
-                    <p class="p_offres mt-3">Votre spécialité consiste à développer des logiciels au profit du ministère des Armées au sein d’un centre de développement. </p>
+                    <h3><?php echo $row['Titre'] ?></h3>
+                    <p class="p_offres mt-3"><?php echo $row['iduser'] ?> </p>
                     <div class="categories_offres d-grid">
-                      <span>Développement FullStack</span>
-                      <span>Développement Web</span>
-                      <span>Frontend & Backend</span>
+                      <span><?php echo $row['Délai'] ?></span>
+                      <span><?php echo $row['Montant'] ?></span>
+                      <span><?php echo $row['Titre'] ?></span>
                     </div>
                     <a href="#" class="btn btn-primary btn_projet mt-3">Details</a>
                 </div>
@@ -414,10 +419,10 @@ if (isset($_SESSION["name"])) {
         </div>
     </footer>
 
+    <script src="../js/index.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script src="../js/index.js"></script>
     <script src="https://kit.fontawesome.com/e80051e55f.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

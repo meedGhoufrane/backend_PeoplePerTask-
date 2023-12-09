@@ -54,7 +54,6 @@ create table Projets(
     id INT PRIMARY KEY AUTO_INCREMENT,
     Titre varchar(40),
     Descriptions VARCHAR(50),
-    idsoc INT,
     iduser int ,
     idcat int ,
     FOREIGN KEY (idcat) REFERENCES categories(id),
@@ -74,7 +73,7 @@ FOREIGN KEY (idsoc) REFERENCES souscategories(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
-select * from USER
+select * from Projets
 
 
 INSERT INTO Projets (Titre, Descriptions, idsoc, iduser, idcat)
@@ -191,7 +190,8 @@ select  projets.id as id , Titre , Descriptions,user.Nom as user ,categories.nom
  from projets INNER JOIN categories INNER JOIN user on user.id = projets.iduser 
  and categories.id= projets.idcat;
 
-
+select   offres.Montant ,offres.Délai ,offres.iduser ,offres.idprojet user.Nom , projets.Titre  ,
+  
 select Temoignages.Commentaire , user.Nom  from Temoignages INNER JOIN user on Temoignages.iduser = user.id;
 
 
@@ -202,3 +202,4 @@ select Temoignages.Commentaire , user.Nom  from Temoignages INNER JOIN user on T
     case admins;
     case freelance;
 }
+

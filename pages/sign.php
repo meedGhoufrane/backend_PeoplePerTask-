@@ -129,7 +129,7 @@
                     <input type="email" style="width: 100%;" class="form-control border-bottom border-0 border" Name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="img" class="form-label">choose image </label>
+                    <label for="img" class="form-label">choose image for your profile  </label>
                     <input type="file" class="form-control" accept="image/png , image/jpg, image/jpeg"  name="img" id="img">
                 </div>  
                 <div class="mb-3">

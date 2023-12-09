@@ -1,26 +1,182 @@
 <?php
-require 'cnx.php';
-session_start();
+ require 'cnx.php';
+ session_start();
 
-?>
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/about-contact.css">
-    <link rel="stylesheet" href="../css/header_footer.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/index.css">
-   
-    <title>PeoplePerTask</title>
-</head>
+<meta charset="utf-8">
 
-<body>
-<style>
-    #logoutbtn{
+
+<title>shop product detail - Bootdey.com</title>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/header_footer.css">
+<style type="text/css">
+ 
+
+/*panel*/
+.panel {
+    border: none;
+    box-shadow: none;
+}
+
+.panel-heading {
+    border-color:#eff2f7 ;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.panel-title {
+    color: #2A3542;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*product list*/
+
+.prod-cat li a{
+    border-bottom: 1px dashed #d9d9d9;
+}
+
+.prod-cat li a {
+    color: #3b3b3b;
+}
+
+.prod-cat li ul {
+    margin-left: 30px;
+}
+
+.prod-cat li ul li a{
+    border-bottom:none;
+}
+.prod-cat li ul li a:hover,.prod-cat li ul li a:focus, .prod-cat li ul li.active a , .prod-cat li a:hover,.prod-cat li a:focus, .prod-cat li a.active{
+    background: none;
+    color: #ff7261;
+}
+
+.pro-lab{
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.pro-sort {
+    padding-right: 20px;
+    float: left;
+}
+
+.pro-page-list {
+    margin: 5px 0 0 0;
+}
+
+.product-list img{
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+}
+
+.product-list .pro-img-box {
+    position: relative;
+}
+.adtocart {
+    background: #fc5959;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    border: 3px solid #fff;
+    left: 45%;
+    bottom: -25px;
+    position: absolute;
+}
+
+.adtocart i{
+    color: #fff;
+    font-size: 25px;
+    line-height: 42px;
+}
+
+.pro-title {
+    color: #5A5A5A;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.product-list .price {
+    color:#fc5959 ;
+    font-size: 15px;
+}
+
+.pro-img-details {
+    margin-left: -15px;
+}
+
+.pro-img-details img {
+    width: 100%;
+}
+
+.pro-d-title {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.product_meta {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    margin: 15px 0;
+}
+
+.product_meta span {
+    display: block;
+    margin-bottom: 10px;
+}
+/* .product_meta a, .pro-price{
+    color:#fc5959 ;
+} */
+
+.pro-price, .amount-old {
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.amount-old {
+    text-decoration: line-through;
+}
+
+.quantity {
+    width: 120px;
+}
+
+.pro-img-list {
+    margin: 10px 0 0 -15px;
+    width: 100%;
+    display: inline-block;
+}
+
+.pro-img-list a {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.pro-d-head {
+    font-size: 18px;
+    font-weight: 300;
+}
+#logoutbtn{
             margin-left: 1rem;
     
         }
@@ -35,12 +191,14 @@ session_start();
         width: 30%;
     }
 
-</style>
+    </style>
+</head>
 
+<body>
 <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-              <a class="navbar-brand" href="#"><img src="../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
+              <a class="navbar-brand" href="index.php" style ="padding-top: 1.5rem;"><img src="../images/PeoplePerTask.png" style="width: 12rem;" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars" style="color: #6298f3;"></i>
               </button>
@@ -73,105 +231,54 @@ session_start();
             </div>
           </nav>
     </header>
+<div class="container bootdey">
+<div class="col-md-12">
+<section class="panel">
+<div class="panel-body">
+<div class="col-md-6">
+<div class="pro-img-details">
+<img src="../images/devweb.png" alt>
+</div>
 
-    <div class="section-hero container pt-5">
-        <div class="row">
-            <div class="col-md-6 pt-5">
-                <h2 class="style" style="color: #6298f3;">About <span class="style" style="color: #f39c12;">Us</span>
-                </h2>
-                <p>Welcome to PeoplePerTask! Our platform was founded in 2015 with the vision of creating a dynamic
-                    space that bridges the gap between talented freelancers and businesses worldwide. With a passion for
-                    fostering meaningful collaborations and empowering the freelance community, we are dedicated to
-                    providing a seamless and secure environment for both freelancers and clients to connect and thrive.
-                </p>
-                <button type="button" class="services-btn btn rounded-pill px-3 my-3" id="openModalBtn">Read more</button>
-            </div>
-            <div class="col-md-6 ">
-                <div class="ml-3">
-                    <img src="../images/Group 38.svg" class="img-fluid " alt="section-hero image">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="style-vector">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="15%" viewBox="0 0 1440 238" fill="none">
-                <path
-                    d="M0 0H60.125C120.25 0 240.5 3.03031e-06 360.75 5.61361C481 11.6509 601.25 22.2426 721.5 62.1734C841.75 101.68 962 169.467 1082.25 175.081C1202.5 181.118 1322.75 123.923 1382.88 96.0669L1443 67.787V237.254H1382.88C1322.75 237.254 1202.5 237.254 1082.25 237.254C962 237.254 841.75 237.254 721.5 237.254C601.25 237.254 481 237.254 360.75 237.254C240.5 237.254 120.25 237.254 60.125 237.254H0V0Z"
-                    fill="#3498DB" fill-opacity="0.2" />
-            </svg>
-            <h2 class="position-absolute ">The Founder</h2>
-        </div>
-    </div>
-    <div class="founder-container">
-        <div class="section-founder container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="../images/Group 1000004885.svg" class="img-fluid" alt="section-hero image">
-                </div>
-                <div class="col-md-6 pt-5">
-                    <p>Meet Mohammed Elarbi EL Hattab, the visionary entrepreneur behind FreelanceNow. With a background
-                        in digital marketing and a passion for empowering freelancers, Sarah embarked on a mission to
-                        create a platform that would revolutionize the way professionals connect and collaborate in the
-                        gig economy. Drawing from her own experiences as a freelancer, Sarah envisioned a user-friendly,
-                        secure, and transparent platform that would bridge the gap between businesses and freelancers
-                        worldwide.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="peopleperTask-idea">
-        <div class="container">
-            <div class="col-md-6 mx-auto my-4">
-                <h2 class="pt-5">The Idea Behind PeoplePerTask</h2>
-                <p class="py-3">PeoplePerTask was born out of the belief that every individual should have the opportunity to
-                    leverage their skills and expertise, regardless of their location or background. The platform was
-                    designed to provide a streamlined and efficient solution for businesses seeking top-tier talent and
-                    for freelancers searching for meaningful projects to showcase their abilities. By prioritizing
-                    fairness, transparency, and user satisfaction, FreelanceNow aims to create a thriving ecosystem
-                    where freelancers and businesses can collaborate seamlessly, fostering growth and success for all
-                    parties involved.</p>
-            </div>
-        </div>
-    </div>
-    <div class="faq-container" style="background-color: #3498DB33;">
-        <div class="Faq-section">
-        <h2 class="px-auto">Most Asked Question</h2> 
-        <div class="faq-container">
-            <h3 class="faq-question py-3">What People?</h3>
-            <div class="faq-answer hidden">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde qui facilis cupiditate, aliquam aut
-                    amet laborum et ut praesentium blanditiis velit fugiat expedita inventore neque, optio doloremque
-                    doloribus dolore soluta illum? Laudantium assumenda corrupti sed! Molestiae voluptate amet ad
-                    provident.</p>
-            </div>
-        </div>
-        <div class="faq-container">
-            <h3 class="faq-question py-3">What about our services?</h3>
-            <div class="faq-answer hidden">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor praesentium explicabo delectus vitae
-                    fugit fugiat blanditiis debitis laborum, eveniet quae recusandae neque voluptas excepturi inventore
-                    totam unde cumque at eum exercitationem eligendi sed amet iusto ipsum. Adipisci fuga beatae quaerat!
-                </p>
-            </div>
-        </div>
-        <div class="faq-container">
-            <h3 class="faq-question py-3">Why you shoud choose us?</h3>
-            <div class="faq-answer hidden">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur officiis cum voluptate dolorum
-                    aut illum necessitatibus incidunt ipsa amet, deserunt dignissimos, pariatur, voluptatum quia.
-                    Ratione quidem odit vitae quisquam non?</p>
-            </div>
-        </div>
-    </div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModalBtn">&times;</span>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi quibusdam quisquam, facere temporibus dolorum culpa modi illum laboriosam natus soluta ea ipsa laborum similique autem aliquam officia nemo neque magnam.</p>
-        </div>
-    </div>
-    </div>
-    <footer class="footer-section">
+
+</div>
+
+<?php
+$id = $_GET ['id'];
+$q = "SELECT Projets.id as id , Projets.Titre as Titre , Projets.Descriptions as Descriptions , user.nom as Nom ,
+ categories.nomcat as nomcat from Projets inner JOIN categories
+INNER JOIN user on (user.id = Projets.iduser 
+and categories.id = Projets.idcat )
+WHERE Projets.id = $id;";
+$res = mysqli_query($cnx,$q);
+while($row = mysqli_fetch_assoc($res))
+{
+?>
+
+<div class="col-md-6">
+<h4 class="pro-d-title">
+<a href="#" class>
+<?php echo $row["Nom"];?>
+</a>
+</h4>
+<p><?php echo $row["Descriptions"];?></p>
+<div class="product_meta">
+<span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#"><?php echo $row["nomcat"]?></a>
+<span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#"></a>, <a rel="tag" href="#"></a>.</span>
+</div>
+
+<p>
+<!-- <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button> -->
+</p>
+<?php
+}
+?>
+</div>
+</div>
+</section>
+</div>
+</div>
+<footer class="footer-section">
         <div class="container">
             <div class="footer-cta pt-5 pb-5">
                 <div class="row">
@@ -272,9 +379,16 @@ session_start();
         </div>
     </footer>
 
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/about.js"></script>
-    <script src="https://kit.fontawesome.com/e80051e55f.js" crossorigin="anonymous"></script>
 </body>
 
+</html>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/about.js"></script>
+<script src="https://kit.fontawesome.com/e80051e55f.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
 </html>

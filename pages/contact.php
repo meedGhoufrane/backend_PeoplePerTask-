@@ -62,7 +62,7 @@ session_start();
                   <a href="sign.php" class="btn btn-primary">Connect</a>
                 </form>
                 <?php }else{?>
-                    <a href="profile.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
+                    <a href="profileuser.php" class="profile"><img  id="img" src="../fillesign/path/to/secure/directory/<?= $_SESSION['img'] ?>" alt="profil"></a>
                     <a  id="logoutbtn" type="button" class="btn btn-danger" role="botton" href="../fillesign/logout.php" >logout</a>
                     <?php };
                      ?>
